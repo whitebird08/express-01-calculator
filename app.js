@@ -3,42 +3,54 @@ var express = require('express'),
 
  app.set('view engine', 'ejs');
 
-  app.get("/add/:num1/:num2", function(req, res){
-    // console.log("This is where we are")
-    var result = parseInt(req.params.num1) + parseInt(req.params.num2)
-    console.log(result);
-    res.send(result.toString());
-  });  
+  // app.get("/add/:num1/:num2", function(req, res){
+  //   // console.log("This is where we are")
+  //   var result = parseInt(req.params.num1) + parseInt(req.params.num2)
+  //   console.log(result);
+  //   res.send(result.toString());
+  // });  
 
-  app.get("/sub/:num1/:num2", function(req, res){
-    // console.log("This is where we are")
-    var result = parseInt(req.params.num1) - parseInt(req.params.num2)
-    console.log(result);
-    res.send(result.toString());
-  }); 
+  // app.get("/sub/:num1/:num2", function(req, res){
+  //   // console.log("This is where we are")
+  //   var result = parseInt(req.params.num1) - parseInt(req.params.num2)
+  //   console.log(result);
+  //   res.send(result.toString());
+  // }); 
 
-   app.get("/mult/:num1/:num2", function(req, res){
-    // console.log("This is where we are")
-    var result = parseInt(req.params.num1) * parseInt(req.params.num2)
-    console.log(result);
-    res.send(result.toString());
-  }); 
+  //  app.get("/mult/:num1/:num2", function(req, res){
+  //   // console.log("This is where we are")
+  //   var result = parseInt(req.params.num1) * parseInt(req.params.num2)
+  //   console.log(result);
+  //   res.send(result.toString());
+  // }); 
 
-    app.get("/div/:num1/:num2", function(req, res){
-    // console.log("This is where we are")
-    var result = parseInt(req.params.num1) / parseInt(req.params.num2)
-    console.log(result);
-    res.send(result.toString());
-  }); 
+  //   app.get("/div/:num1/:num2", function(req, res){
+  //   // console.log("This is where we are")
+  //   var result = parseInt(req.params.num1) / parseInt(req.params.num2)
+  //   console.log(result);
+  //   res.send(result.toString());
+  // }); 
 
-  // app.get("/:operator/:num1/:num2", function(req, res){
-  //   var result;
-  //   if (req.params.operator === 'div') {
-  //     result = parseInt(req.params.num1) / parseInt(req.params.num2)
-  //   }
+  app.get("/:operator/:num1/:num2", function(req, res){
+    var result;
+    if (req.params.operator === 'div') {
+      result = parseInt(req.params.num1) / parseInt(req.params.num2)
+    }
+
+    if (req.params.operator === 'mult') {
+      result = parseInt(req.params.num1) * parseInt(req.params.num2)
+    }
+
+    if (req.params.operator === 'sub') {
+      result = parseInt(req.params.num1) - parseInt(req.params.num2)
+    }
+
+    if (req.params.operator === 'add') {
+      result = parseInt(req.params.num1) + parseInt(req.params.num2)
+    }
  
-  //   res.send(result.toString())
-  // })
+    res.send(result.toString())
+  })
 
 app.listen(3000, function () {
   console.log("Go to localhost:3000/");
